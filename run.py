@@ -15,9 +15,11 @@ def main():
         print(f"Path {directory} is not a dir")
         return
 
-    for file in directory.glob("**/*.svg"):
+    for file in directory.glob("*.svg"):
         print(f"processing file {file}")
-        output_file = file.absolute().with_name(f"{file.stem}_small{file.suffix}")
+        output_folder = file.parent / 'small'
+        output_folder.mkdir(exist_ok=True)
+        output_file = output_folder / file.with_name(f"{file.stem}_small{file.suffix}").name
         simple_inkscape_scripting.SimpleInkscapeScripting().run(
             args=[
                 "--py-source",
