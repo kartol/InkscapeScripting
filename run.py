@@ -16,6 +16,7 @@ def main():
         return
 
     for file in directory.glob("**/*.svg"):
+        print(f"processing file {file}")
         output_file = file.absolute().with_name(f"{file.stem}_small{file.suffix}")
         simple_inkscape_scripting.SimpleInkscapeScripting().run(
             args=[

@@ -7,3 +7,9 @@ from simpinkscr import *
 for layer in all_layers():
     if 'style' in layer._inkscape_obj.attrib and 'display:none' in layer._inkscape_obj.attrib['style']:
         layer.remove()
+        print("\tremoving layer")
+
+for obj in all_shapes():
+    if 'style' in obj._inkscape_obj.attrib and 'display:none' in obj._inkscape_obj.attrib['style']:
+        obj.remove()
+        print("\tremoving obj")
